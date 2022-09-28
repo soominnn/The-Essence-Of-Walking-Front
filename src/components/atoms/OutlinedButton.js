@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 
 function OutlinedButton(props){
     return (
-        <Button variant="outlined" size={"large"}>{props.content}</Button>
+        <Button onClick={props.onClick} variant="outlined" size={"large"}>{props.content}</Button>
     );
 }
 

@@ -3,8 +3,15 @@ import TextInput from "../atoms/TextInput";
 import {Box} from "@mui/material";
 import OutlinedButton from "../atoms/OutlinedButton";
 import TextButton from "../atoms/TextButton";
-
+import {useNavigate} from "react-router-dom";
 function LoginPage(){
+    const navigate = useNavigate();
+    const signupButtonOnClick = () => {
+        navigate("/signup");
+    }
+    const loginButtonOnClick = () => {
+        navigate("/main");
+    }
     return(
         <div>
             <Box
@@ -17,16 +24,16 @@ function LoginPage(){
                 autoComplete="off"
             >
                 <div>
-                    <TextInput label={"ID"}/>
+                    <TextInput label={"아이디"}/>
                 </div>
                 <div>
-                    <TextInput label={"Password"} type={"password"}/>
+                    <TextInput label={"비밀번호"} type={"password"}/>
                 </div>
                 <div>
-                    <OutlinedButton content={"로그인"}/>
+                    <OutlinedButton onClick={loginButtonOnClick} content={"로그인"}/>
                 </div>
             </Box>
-                <TextButton content={"회원가입"}/>
+                <TextButton onClick={signupButtonOnClick} content={"회원가입"}/>
         </div>
     );
 }

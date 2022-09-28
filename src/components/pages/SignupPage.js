@@ -27,7 +27,16 @@ function SignupPage(){
                 <TextInput label={"이름"}/>
             </div>
             <div>
-                <TextInput label={"휴대폰 번호"} type={"number"}/>
+                <TextInput label={"성별"}/>
+            </div>
+            <div>
+                <TextInput label={"나이"} type={"number"}/>
+            </div>
+            <div>
+                <TextInput label={"이메일"}/>
+            </div>
+            <div>
+                <TextInput label={"휴대폰 번호"}/>
             </div>
             <OutlinedButton content={"회원가입"}/>
         </Box>
