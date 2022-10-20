@@ -9,18 +9,18 @@ function SignupPage(){
 
     //회원가입 정보
     const [signupInfo, setSignupInfo] = useState({
-        id: "",
+        userid: "",
         password: "",
         name: "",
         age: "",
         gender: "",
         email: "",
-        phoneNumber: "",
+        phone: "",
     });
 
     //순서대로 id, 비밀번호, 비밀번호 재확인, 이름, 전화번호 변화 감지
     const idOnChange = (e) => {
-        setSignupInfo({ ...signupInfo, id: e.target.value });
+        setSignupInfo({ ...signupInfo, userid: e.target.value });
     };
     const passwordOnChange = (e) => {
         setSignupInfo({ ...signupInfo, password: e.target.value });
@@ -41,7 +41,7 @@ function SignupPage(){
         setSignupInfo({ ...signupInfo, email: e.target.value });
     };
     const phoneNumberOnChange = (e) => {
-        setSignupInfo({ ...signupInfo, phoneNumber: e.target.value });
+        setSignupInfo({ ...signupInfo, phone: e.target.value });
     };
 
     //엔터 누르면 회원가입 버튼 누른것과 같은 기능
@@ -57,21 +57,19 @@ function SignupPage(){
         console.log(signupInfo)
         //입력 안된 것이 있으면 경고창 띄위기
         if (
-            signupInfo.id === "" ||
+            signupInfo.userid === "" ||
             signupInfo.password === "" ||
             signupInfo.name === "" ||
             signupInfo.age === "" ||
-            signupInfo.age === "" ||
+            signupInfo.gender === "" ||
             signupInfo.email === "" ||
-            signupInfo.phoneNumber === ""
+            signupInfo.phone === ""
         ) {
             alert("회원가입 정보를 올바르게 입력하세요.");
             return;
         }
         await axios
-            .post("http://localhost:8081/signup", signupInfo, {
-                withCredentials: true,
-            })
+            .post("http://localhost:8080/users", signupInfo)
             .then((res) => {
                 alert("회원가입 되었습니다.");
                 navigate("/");
