@@ -41,9 +41,7 @@ function LoginPage(){
             return;
         }
         await axios
-            .post("http://localhost:8081/login", loginInfo, {
-                withCredentials: true,
-            })
+            .post("http://localhost:8080/login", loginInfo)
             .then((res) => {
                 navigate("/main");
             })

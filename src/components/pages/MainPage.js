@@ -21,9 +21,7 @@ function MainPage(){
     //동영상 녹화 시작
     const videoStart = async () => {
         await axios
-            .get("http://localhost:8080/python", {
-                withCredentials: true,
-            })
+            .get("http://localhost:8080/python")
             .then((res) => {
                 console.log(res);
             })
