@@ -2,8 +2,10 @@ import React from "react";
 import DrawerAppBar from "../atoms/DrawerAppBar";
 import {Box} from "@mui/material";
 import OutlinedButton from "../atoms/OutlinedButton";
+import {useNavigate} from "react-router-dom";
 
 function MyPage(){
+    const navigate = useNavigate();
     return(
         <div>
             <DrawerAppBar/>
@@ -17,7 +19,7 @@ function MyPage(){
                 autoComplete="off"
             >
                 <div>
-                    <OutlinedButton content={'과거 데이터 비교'}/>
+                    <OutlinedButton content={'과거 데이터 비교'} onClick={() => navigate('/recordcompare')}/>
                 </div>
                 <div>
                     <OutlinedButton content={'내 정보 수정'}/>
