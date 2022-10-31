@@ -5,6 +5,7 @@ import OutlinedButton from "../atoms/OutlinedButton";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import DrawerAppBar from "../atoms/DrawerAppBar";
+import Footer from "../atoms/Footer";
 function SignupPage(){
     const navigate = useNavigate();
 
@@ -118,6 +119,7 @@ function SignupPage(){
                 </div>
                 <OutlinedButton content={"회원가입"} onClick={SignUpOnClick}/>
             </Box>
+            <Footer/>
         </div>
     );
 }

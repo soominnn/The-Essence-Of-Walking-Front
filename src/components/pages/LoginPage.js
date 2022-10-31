@@ -7,6 +7,8 @@ import TextButton from "../atoms/TextButton";
 import {useNavigate} from "react-router-dom";
 import DrawerAppBar from "../atoms/DrawerAppBar";
 import walkingman from "../img/walkingman.png";
+import Footer from "../atoms/Footer";
+
 function LoginPage(){
     const navigate = useNavigate();
     //로그인 정보
@@ -51,10 +53,9 @@ function LoginPage(){
     };
 
     return(
-
         <div>
             <DrawerAppBar/>
-            <img src={walkingman} width={"100px"} />
+            <img src={walkingman} width={"120px"} />
             <Box
                 component="form"
                 sx={{
@@ -63,7 +64,7 @@ function LoginPage(){
                 }}
                 noValidate
                 autoComplete="off"
-            >
+                >
                 <div>
                     <TextInput label={"아이디"} onChange={idChange}/>
                 </div>
@@ -75,6 +76,7 @@ function LoginPage(){
                 </div>
                 <TextButton onClick={signupButtonOnClick} content={"회원가입"}/>
             </Box>
+            <Footer/>
         </div>
     );
 }

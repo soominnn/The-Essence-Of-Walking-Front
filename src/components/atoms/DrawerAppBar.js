@@ -72,9 +72,6 @@ function DrawerAppBar(props) {
                         variant="h6"
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block', textAlign: 'left' } }}
-                        onClick={()=>{
-                            navigate("/main");
-                        }}
                     >
                         걷기의 정석
                     </Typography>

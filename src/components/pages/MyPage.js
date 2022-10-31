@@ -3,6 +3,7 @@ import DrawerAppBar from "../atoms/DrawerAppBar";
 import {Box} from "@mui/material";
 import OutlinedButton from "../atoms/OutlinedButton";
 import {useNavigate} from "react-router-dom";
+import Footer from "../atoms/Footer";
 
 function MyPage(){
     const navigate = useNavigate();
@@ -34,6 +35,7 @@ function MyPage(){
                     <OutlinedButton content={'회원 탈퇴'} onClick={removeInfo}/>
                 </div>
             </Box>
+            <Footer/>
         </div>
     );
 }

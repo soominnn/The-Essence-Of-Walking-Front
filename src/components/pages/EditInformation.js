@@ -4,6 +4,7 @@ import {Box} from "@mui/material";
 import OutlinedButton from "../atoms/OutlinedButton";
 import {useNavigate} from "react-router-dom";
 import DrawerAppBar from "../atoms/DrawerAppBar";
+import Footer from "../atoms/Footer";
 function EditInformation(){
     const navigate = useNavigate();
 
@@ -94,6 +95,7 @@ function EditInformation(){
                 </div>
                 <OutlinedButton content={"회원정보 수정"} onClick ={editInfoButtonClick}/>
             </Box>
+            <Footer/>
         </div>
     );
 }
