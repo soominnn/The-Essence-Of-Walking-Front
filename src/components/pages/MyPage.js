@@ -6,6 +6,12 @@ import {useNavigate} from "react-router-dom";
 
 function MyPage(){
     const navigate = useNavigate();
+    const removeInfo = () => {
+        if (window.confirm('정말 탈퇴하시겠습니까?')){
+        //    탈퇴 API 넣기
+            navigate('/');
+        }
+    }
     return(
         <div>
             <DrawerAppBar/>
@@ -22,10 +28,10 @@ function MyPage(){
                     <OutlinedButton content={'과거 데이터 비교'} onClick={() => navigate('/recordcompare')}/>
                 </div>
                 <div>
-                    <OutlinedButton content={'내 정보 수정'}/>
+                    <OutlinedButton content={'내 정보 수정'} onClick={() => navigate('/editinfo')}/>
                 </div>
                 <div>
-                    <OutlinedButton content={'회원 탈퇴'}/>
+                    <OutlinedButton content={'회원 탈퇴'} onClick={removeInfo}/>
                 </div>
             </Box>
         </div>
