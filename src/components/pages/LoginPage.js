@@ -6,6 +6,7 @@ import OutlinedButton from "../atoms/OutlinedButton";
 import TextButton from "../atoms/TextButton";
 import {useNavigate} from "react-router-dom";
 import DrawerAppBar from "../atoms/DrawerAppBar";
+import walkingman from "../img/walkingman.png";
 function LoginPage(){
     const navigate = useNavigate();
     //로그인 정보
@@ -53,12 +54,12 @@ function LoginPage(){
 
         <div>
             <DrawerAppBar/>
+            <img src={walkingman} width={"100px"} />
             <Box
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '25ch' },
                     '& button': { m: 1, width: '30ch' },
-                    marginTop: "200px",
                 }}
                 noValidate
                 autoComplete="off"

@@ -16,14 +16,16 @@ import Button from '@mui/material/Button';
 import {useNavigate} from "react-router-dom";
 
 const drawerWidth = 240;
-const navItems = ['MYPAGE', 'LOGOUT'];
+const navItems = ['HOME', 'MYPAGE', 'LOGOUT'];
 
 function DrawerAppBar(props) {
     const navigate = useNavigate();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const navButtonClick = (item) => {
-        if (item === 'MYPAGE'){
+        if (item === 'HOME'){
+            navigate('/main');
+        } else if (item === 'MYPAGE'){
             navigate('/mypage');
         } else if (item === 'LOGOUT') {
             navigate('/');
@@ -54,7 +56,7 @@ function DrawerAppBar(props) {
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
-        <Box sx={{ display: 'flex'}}>
+        <Box sx={{ display: 'flex', marginBottom: '100px'}}>
             <AppBar component="nav">
                 <Toolbar>
                     <IconButton
