@@ -87,8 +87,8 @@ function SignupPage(){
             <Box
                 component="form"
                 sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' },
-                    '& button': { m: 1, width: '30ch' },
+                    '& .MuiTextField-root': { m: 1, width: '300px' },
+                    '& button': { m: 1, width: '300px' },
                 }}
                 noValidate
                 autoComplete="off"
