@@ -5,6 +5,7 @@ import {Box} from "@mui/material";
 import OutlinedButton from "../atoms/OutlinedButton";
 import TextButton from "../atoms/TextButton";
 import {useNavigate} from "react-router-dom";
+import DrawerAppBar from "../atoms/DrawerAppBar";
 function LoginPage(){
     const navigate = useNavigate();
     //로그인 정보
@@ -49,12 +50,15 @@ function LoginPage(){
     };
 
     return(
+
         <div>
+            <DrawerAppBar/>
             <Box
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '25ch' },
                     '& button': { m: 1, width: '30ch' },
+                    marginTop: "200px",
                 }}
                 noValidate
                 autoComplete="off"
@@ -68,8 +72,8 @@ function LoginPage(){
                 <div>
                     <OutlinedButton onClick={loginButtonOnClick} content={"로그인"}/>
                 </div>
-            </Box>
                 <TextButton onClick={signupButtonOnClick} content={"회원가입"}/>
+            </Box>
         </div>
     );
 }

@@ -4,6 +4,7 @@ import {Box} from "@mui/material";
 import OutlinedButton from "../atoms/OutlinedButton";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import DrawerAppBar from "../atoms/DrawerAppBar";
 function SignupPage(){
     const navigate = useNavigate();
 
@@ -80,41 +81,44 @@ function SignupPage(){
     };
 
     return(
-        <Box
-            component="form"
-            sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
-                '& button': { m: 1, width: '30ch' },
-            }}
-            noValidate
-            autoComplete="off"
-        >
-            <div>
-                <TextInput label={"아이디"} onChange={idOnChange} onKeyDown={onKeyDown}/>
-            </div>
-            <div>
-                <TextInput label={"비밀번호"} type={"password"} onChange={passwordOnChange} onKeyDown={onKeyDown}/>
-            </div>
-            <div>
-                <TextInput label={"비밀번호 재확인"} type={"password"} onKeyDown={onKeyDown}/>
-            </div>
-            <div>
-                <TextInput label={"이름"} onChange={nameOnChange} onKeyDown={onKeyDown}/>
-            </div>
-            <div>
-                <TextInput label={"나이"} type={"number"} onChange={ageOnChange} onKeyDown={onKeyDown}/>
-            </div>
-            <div>
-                <TextInput label={"성별"} onChange={genderOnChange} onKeyDown={onKeyDown}/>
-            </div>
-            <div>
-                <TextInput label={"이메일"} onChange={emailOnChange} onKeyDown={onKeyDown}/>
-            </div>
-            <div>
-                <TextInput label={"휴대폰 번호"} onChange={phoneNumberOnChange} onKeyDown={onKeyDown}/>
-            </div>
-            <OutlinedButton content={"회원가입"} onClick={SignUpOnClick}/>
-        </Box>
+        <div>
+            <DrawerAppBar/>
+            <Box
+                component="form"
+                sx={{
+                    '& .MuiTextField-root': { m: 1, width: '25ch' },
+                    '& button': { m: 1, width: '30ch' },
+                }}
+                noValidate
+                autoComplete="off"
+            >
+                <div>
+                    <TextInput label={"아이디"} onChange={idOnChange} onKeyDown={onKeyDown}/>
+                </div>
+                <div>
+                    <TextInput label={"비밀번호"} type={"password"} onChange={passwordOnChange} onKeyDown={onKeyDown}/>
+                </div>
+                <div>
+                    <TextInput label={"비밀번호 재확인"} type={"password"} onKeyDown={onKeyDown}/>
+                </div>
+                <div>
+                    <TextInput label={"이름"} onChange={nameOnChange} onKeyDown={onKeyDown}/>
+                </div>
+                <div>
+                    <TextInput label={"나이"} type={"number"} onChange={ageOnChange} onKeyDown={onKeyDown}/>
+                </div>
+                <div>
+                    <TextInput label={"성별"} onChange={genderOnChange} onKeyDown={onKeyDown}/>
+                </div>
+                <div>
+                    <TextInput label={"이메일"} onChange={emailOnChange} onKeyDown={onKeyDown}/>
+                </div>
+                <div>
+                    <TextInput label={"휴대폰 번호"} onChange={phoneNumberOnChange} onKeyDown={onKeyDown}/>
+                </div>
+                <OutlinedButton content={"회원가입"} onClick={SignUpOnClick}/>
+            </Box>
+        </div>
     );
 }
 

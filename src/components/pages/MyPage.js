@@ -1,14 +1,14 @@
 import React from "react";
 import DrawerAppBar from "../atoms/DrawerAppBar";
 
-function MainPage(){
+function MyPage(){
     return(
 
         <div>
             <DrawerAppBar/>
-            MainPage
+            mypage
         </div>
     );
 }
 
-export default MainPage;
+export default MyPage;
