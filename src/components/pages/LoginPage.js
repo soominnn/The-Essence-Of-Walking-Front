@@ -13,13 +13,13 @@ function LoginPage(){
     const navigate = useNavigate();
     //로그인 정보
     const [loginInfo, setLoginInfo] = useState({
-        id: "",
+        userid: "",
         password: "",
     });
 
     //id 입력 변화
     const idChange = (e) => {
-        setLoginInfo({...loginInfo, id: e.target.value});
+        setLoginInfo({...loginInfo, userid: e.target.value});
     }
 
     //password 입력 변화
@@ -36,7 +36,7 @@ function LoginPage(){
     const loginButtonOnClick = async () => {
         console.log(loginInfo)
         //아이디나 비밀번호 입력이 없을 때 경고창
-        if (loginInfo.id === "" || loginInfo.password === "") {
+        if (loginInfo.userid === "" || loginInfo.password === "") {
             alert("아이디 또는 비밀번호를 올바르게 입력하세요.");
             return;
         }
