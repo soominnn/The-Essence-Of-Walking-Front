@@ -5,20 +5,26 @@ import OutlinedButton from "../atoms/OutlinedButton";
 import {useNavigate} from "react-router-dom";
 import DrawerAppBar from "../atoms/DrawerAppBar";
 import Footer from "../atoms/Footer";
-function EditInformation(){
-    const navigate = useNavigate();
+import {useRecoilValue} from "recoil";
+import {userInfo} from "../recoils/UserInfo";
+import axios from "axios";
+import {userId} from "../recoils/UserId";
 
+function EditInformation(){
+    const userID = useRecoilValue(userId);
+    const navigate = useNavigate();
+    const userInfoValue = useRecoilValue(userInfo);
     //회원가입 정보
     const [signupInfo, setSignupInfo] = useState({
-        userid: "",
+        userid: userInfoValue.userid,
         password: "",
-        name: "",
-        age: "",
-        gender: "",
-        email: "",
-        phone: "",
+        name: userInfoValue.name,
+        age: userInfoValue.age,
+        gender: userInfoValue.gender,
+        email: userInfoValue.email,
+        phone: userInfoValue.phone,
     });
-
+    console.log(signupInfo);
     //순서대로 id, 비밀번호, 비밀번호 재확인, 이름, 전화번호 변화 감지
     const idOnChange = (e) => {
         setSignupInfo({ ...signupInfo, userid: e.target.value });
@@ -52,9 +58,18 @@ function EditInformation(){
         }
     };
 
-    const editInfoButtonClick = () => {
-        alert("회원정보가 수정되었습니다.");
-        navigate('/mypage')
+    //회원정보 수정 API
+    const editInfoButtonClick = async () => {
+        await axios
+            .patch(`http://localhost:8080/users/info/${userID}`, signupInfo)
+            .then((res) => {
+                console.log(res);
+                alert("회원정보가 수정되었습니다.");
+                navigate('/mypage');
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     return(
@@ -70,7 +85,7 @@ function EditInformation(){
                 autoComplete="off"
             >
                 <div>
-                    <TextInput label={"아이디"} onChange={idOnChange} onKeyDown={onKeyDown}/>
+                    <TextInput defaultValue = {userInfoValue.userid} label={"아이디"} onChange={idOnChange} onKeyDown={onKeyDown}/>
                 </div>
                 <div>
                     <TextInput label={"비밀번호"} type={"password"} onChange={passwordOnChange} onKeyDown={onKeyDown}/>
@@ -79,19 +94,19 @@ function EditInformation(){
                     <TextInput label={"비밀번호 재확인"} type={"password"} onKeyDown={onKeyDown}/>
                 </div>
                 <div>
-                    <TextInput label={"이름"} onChange={nameOnChange} onKeyDown={onKeyDown}/>
+                    <TextInput defaultValue = {userInfoValue.name} label={"이름"} onChange={nameOnChange} onKeyDown={onKeyDown}/>
                 </div>
                 <div>
-                    <TextInput label={"나이"} type={"number"} onChange={ageOnChange} onKeyDown={onKeyDown}/>
+                    <TextInput defaultValue = {userInfoValue.age} label={"나이"} type={"number"} onChange={ageOnChange} onKeyDown={onKeyDown}/>
                 </div>
                 <div>
-                    <TextInput label={"성별"} onChange={genderOnChange} onKeyDown={onKeyDown}/>
+                    <TextInput defaultValue = {userInfoValue.gender} label={"성별"} onChange={genderOnChange} onKeyDown={onKeyDown}/>
                 </div>
                 <div>
-                    <TextInput label={"이메일"} onChange={emailOnChange} onKeyDown={onKeyDown}/>
+                    <TextInput defaultValue = {userInfoValue.email} label={"이메일"} onChange={emailOnChange} onKeyDown={onKeyDown}/>
                 </div>
                 <div>
-                    <TextInput label={"휴대폰 번호"} onChange={phoneNumberOnChange} onKeyDown={onKeyDown}/>
+                    <TextInput defaultValue = {userInfoValue.phone} label={"이메일"} label={"휴대폰 번호"} onChange={phoneNumberOnChange} onKeyDown={onKeyDown}/>
                 </div>
                 <OutlinedButton content={"회원정보 수정"} onClick ={editInfoButtonClick}/>
             </Box>
