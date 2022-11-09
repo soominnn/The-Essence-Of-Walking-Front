@@ -1,18 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import DrawerAppBar from "../atoms/DrawerAppBar";
 import {Box} from "@mui/material";
 import OutlinedButton from "../atoms/OutlinedButton";
 import {useNavigate} from "react-router-dom";
 import Footer from "../atoms/Footer";
+import axios from "axios";
+import {userId} from "../recoils/UserId";
+import {useRecoilValue} from "recoil";
 
 function MyPage(){
+    const userID = useRecoilValue(userId);
     const navigate = useNavigate();
-    const removeInfo = () => {
-        if (window.confirm('정말 탈퇴하시겠습니까?')){
-        //    탈퇴 API 넣기
-            navigate('/');
+    const removeInfo = async () => {
+        const check = window.confirm('정말 탈퇴하시겠습니까?');
+        if (check) {
+            await axios
+                .delete(`http://localhost:8080/users/delete/${userID}`)
+                .then(res => {
+                    navigate('/');
+                })
+                .catch((err) => {
+                    alert("회원 탈퇴 오류입니다.");
+                })
         }
     }
+
     return(
         <div>
             <DrawerAppBar/>
