@@ -8,8 +8,11 @@ import {useNavigate} from "react-router-dom";
 import DrawerAppBar from "../atoms/DrawerAppBar";
 import walkingman from "../img/walkingman.png";
 import Footer from "../atoms/Footer";
+import {userId} from "../recoils/UserId";
+import {useSetRecoilState} from "recoil";
 
 function LoginPage(){
+    const setUserId = useSetRecoilState(userId);
     const navigate = useNavigate();
     //로그인 정보
     const [loginInfo, setLoginInfo] = useState({
@@ -43,6 +46,7 @@ function LoginPage(){
         await axios
             .post("http://localhost:8080/login", loginInfo)
             .then((res) => {
+                setUserId(loginInfo.userid);
                 navigate("/main");
             })
             .catch((err) => {

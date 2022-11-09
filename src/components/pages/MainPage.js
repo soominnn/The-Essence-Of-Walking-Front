@@ -7,6 +7,8 @@ import DrawerAppBar from "../atoms/DrawerAppBar";
 import Footer from "../atoms/Footer";
 import OutlinedButton from "../atoms/OutlinedButton";
 import axios from "axios";
+import {useRecoilValue} from "recoil";
+import {userId} from "../recoils/UserId";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,10 +20,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function MainPage(){
+    const userID = useRecoilValue(userId);
+    console.log(userID)
     //동영상 녹화 시작
     const videoStart = async () => {
         await axios
-            .get("http://localhost:8080/python")
+            .get(`http://localhost:8080/python/${userID}`)
             .then((res) => {
                 console.log(res);
             })
