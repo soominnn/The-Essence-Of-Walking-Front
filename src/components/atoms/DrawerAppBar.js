@@ -14,6 +14,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const drawerWidth = 240;
 const navItems = ['HOME', 'MYPAGE', 'LOGOUT'];
@@ -29,8 +30,23 @@ function DrawerAppBar(props) {
             navigate('/mypage');
         } else if (item === 'LOGOUT') {
             navigate('/');
+            //로그아웃
+            // userLogout();
         }
     }
+
+    //로그아웃 버튼 API
+    // const userLogout = async () => {
+    //     await axios
+    //         .post("http://localhost:8080/logout")
+    //         .then((res) => {
+    //             navigate('/');
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         })
+    // }
+
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
