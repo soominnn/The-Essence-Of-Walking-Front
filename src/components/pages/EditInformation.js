@@ -32,9 +32,9 @@ function EditInformation(){
     const passwordOnChange = (e) => {
         setSignupInfo({ ...signupInfo, password: e.target.value });
     };
-    // const passwordCheckOnChange = (e) => {
-    //     setSignupInfo({ ...signupInfo, passwordCheck: e.target.value });
-    // };
+    const passwordCheckOnChange = (e) => {
+        setSignupInfo({ ...signupInfo, passwordCheck: e.target.value });
+    };
     const nameOnChange = (e) => {
         setSignupInfo({ ...signupInfo, name: e.target.value });
     };
